@@ -1,0 +1,137 @@
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  --maincolor: #3924AF;
+--bg-light:white;
+--bg-dark:rgb(46, 46, 46);
+--text-light: rgb(28, 28, 28);
+--text-dark:white;
+}
+
+.main-cont{
+/* background-color: pink; */
+width: 100%;
+height: 100vh;
+display: flex;
+flex-direction: row;
+
+
+}
+
+.com-tagline{
+  font: 900 4rem  white;
+  color: white;
+}
+.com-subtitle{
+  font:  5rem 'Bebas Neue' ;
+  color: rgba(255, 255, 255, 0.352);
+}
+.stag{
+  font:800 2rem white;
+  padding-bottom: 5vh;
+}
+.sin{
+  margin-left: 20px;
+  font: 800 1.6rem white;
+  padding-right: 10px;
+}
+.nunito{ 
+  text-align: center;
+font-family:  'Nunito', sans-serif;
+}
+#signup-link{
+  text-decoration: none;
+  font: 900 1rem var(--maincolor);
+
+}
+
+.img-cont{
+  transition: all 0.2s;
+  overflow: none;
+  background: linear-gradient(133.23deg, #383C9F 33.83%, #3924AF 74.49%);
+  height: 100%;
+  flex:1.5; 
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 50px;
+  overflow: hidden;
+  /* background: linear-gradient(133.23deg, #383C9F 33.83%, #3924AF 74.49%); */
+}
+#google{
+  /* transition: all 1s; */
+  /* width: 340px; */
+  background-color: var(--maincolor);
+  display: flex;
+  color: white;
+  align-items: center;
+  cursor: pointer;
+margin-bottom: 8px;
+  /* justify-content: space-between; */
+  height: 80px;
+  border-radius: 100px;
+  border: none;
+  transition: all 1s;
+}
+#google:hover{
+  /* border: 10px solid black; */
+  opacity: 0.9;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.24);
+}
+.action-cont
+
+#glogo{
+  background-color: white;
+  width: 60px;
+  margin-left: 15px;
+  height: 60px;
+  border-radius: 80px;
+}
+
+
+
+.action-cont{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border:1px solid blue; 
+  flex:1; 
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+#logo{
+/* width: 100%; */
+height: 40px;
+margin: 10px;
+}
+.hands-img{
+  width:45vh;
+  object-fit: contain;
+
+}
+.img-hidden{
+  opacity: 0;
+  flex: 0;
+}
+@media only screen and (max-width: 800px) {
+.main-cont{
+  flex-direction: column;
+}
+.img-cont{
+  padding: 0px;
+}
+.hands-img{
+  height: 30vh;
+}
+.com-tagline{
+font-size: 2.4rem;
+}
+.com-subtitle{
+  font-size: 3rem;
+}
+#google{
+  width: 80vw;}
+}
