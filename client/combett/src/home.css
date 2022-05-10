@@ -1,0 +1,43 @@
+.home-cont{
+    min-height: 100vh;
+    /* background-color: pink; */
+}
+
+.banner-home{
+    margin-top: 10vh;
+    background-color: rgb(240, 240, 240);
+    width: 100%;
+    height: 10vh;
+    /* margin */
+}
+#home-textinput{
+border: none;outline: none;
+
+
+}
+.search{
+display: flex;
+flex-direction: column;
+align-items: center;
+
+}
+.home-searchbar input{
+font-family: 'Raleway', sans-serif ;
+font-size: 1.2rem;
+width: 40%;
+margin: 1vh;
+}
+.home-searchbar{
+position: relative;
+top:-30px;
+font-family: 'Raleway', sans-serif ;
+padding: 0 10px;
+display: flex;
+height: 60px;
+background-color: var(--bg-light);
+width: min(600px,93vw);
+border-radius: 10px;
+box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.071);
+align-items: center;
+
+}
