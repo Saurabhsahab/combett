@@ -1,15 +1,37 @@
 .home-cont{
-    background-color: rgb(224, 224, 224);
+    background-color: var(--light-grey);
 display: flex;
-flex-direction: column;
+/* flex-direction: column; */
 align-items: center;
-padding: 10px;
+padding:0 10px;
+
 }
 .cont{
 background-color: white;
+margin: 0 auto;
 width: 80vw;
 padding: 10px;
-height: 100vh;
+/* height: 100vh; */
+margin-top: 8vh;
 display: flex;
 flex-direction: column;
+/* align-items: center; */
+
+border-radius: 10px;
+
+}
+.MuiButtonBase-root #sb{
+    width: 300px;
+    font-size: 1rem !important;
+    margin:0 auto !important;
+}
+.sbtn{
+    font-size: large;
+    width: 300px;
+
+    padding: 10px;
+
+    /* margin: 10px; */
+
+
 }
