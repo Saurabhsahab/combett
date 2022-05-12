@@ -9,6 +9,7 @@ function SignIn() {
 
 
 const [imghidden,setimghidden]=useState("false");
+
 const handleLogin = async googleData => {
   const res = await fetch("/api/v1/auth/google", {
       method: "POST",

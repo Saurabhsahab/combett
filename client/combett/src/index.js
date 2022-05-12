@@ -23,7 +23,7 @@ root.render(
   {/* <Component key={router.route} {...pageProps} /> */}
 
   <BrowserRouter>
-  <Navbar />
+  {/* <Navbar /> */}
     <Routes>
 
       {/* <Route path="/" element={<Navbar />} /> */}

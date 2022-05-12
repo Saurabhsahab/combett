@@ -1,0 +1,43 @@
+.Appbar{
+    width: 100%;
+    /* background-color: pink; */
+    height: 5vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    /* padding: 10px; */
+    display: flex;
+    padding: 0 10px;
+    flex-direction: row;
+justify-content: space-between;
+align-items: center;
+}
+.links a{
+text-decoration: none;
+padding: 10px;
+color: var(  --text-light);
+transition: all 0.2s;
+
+}
+.links a:hover{
+  background-color: rgba(128, 128, 128, 0.122);
+    
+    }
+    .tbtn{
+      height: 100%;
+      padding: 10px;
+     /* margin: 10px; */
+
+    }
+    @media only screen and (max-width: 600px)
+    {.links{
+      display: none;
+    }
+
+    }
+    @media only screen and (min-width: 600px)  {
+      .tbtn{
+       display: none;
+  
+      }
+    }
