@@ -33,6 +33,19 @@ app.get("/user/:email", async (req, res) => {
   }
 });
 
+app.get("/user/:id", async (req, res) => {
+  try {
+    const a = await user.find({ _id: req.params.id });
+    if (!a) {
+      res.status(404).send();
+    } else {
+      res.status(200).send(a);
+    }
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
+
 app.patch("/user/:id", async (req, res) => {
   try {
     const id = req.params.id;
@@ -55,6 +68,16 @@ app.delete("/user/:id", async (req, res) => {
   }
 });
 
+app.delete("/user/:email", async (req, res) => {
+  try {
+    const id = req.params.email;
+    const data = await user.findAndDelete({ email: id });
+    res.status(200).send("User Deleted!");
+  } catch (error) {
+    res.status(204).json({ message: error.message });
+  }
+});
+
 // skill endpoints
 
 app.post("/skill", async (req, res) => {
@@ -71,6 +94,19 @@ app.post("/skill", async (req, res) => {
 app.get("/skill/:id", async (req, res) => {
   try {
     const a = await skill.find({ s_id: req.params.id });
+    if (!a) {
+      res.status(404).send();
+    } else {
+      res.status(200).send(a);
+    }
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
+
+app.get("/skill", async (req, res) => {
+  try {
+    const a = await skill.find({});
     if (!a) {
       res.status(404).send();
     } else {
@@ -119,6 +155,19 @@ app.post("/experience", async (req, res) => {
 app.get("/experience/:id", async (req, res) => {
   try {
     const a = await experience.find({ s_id: req.params.id });
+    if (!a) {
+      res.status(404).send();
+    } else {
+      res.status(200).send(a);
+    }
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
+
+app.get("/experience/", async (req, res) => {
+  try {
+    const a = await experience.find({});
     if (!a) {
       res.status(404).send();
     } else {

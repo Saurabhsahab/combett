@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
-const { default: isEmail } = require("validator/lib/isemail");
 
 const usersch = new mongoose.Schema({
   fname: {
@@ -20,27 +19,27 @@ const usersch = new mongoose.Schema({
         throw new error("Email is Invalid");
       }
     },
-    batch: {
-      type: String,
-      required: true,
-    },
-    pf_img: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    present_company: {
-      type: String,
-      required: true,
-    },
-    about: {
-      type: String,
-    },
-    gh_link: {
-      type: String,
-      required: true,
-      unique: true,
-    },
+  },
+  batch: {
+    type: String,
+    required: true,
+  },
+  pf_img: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  present_company: {
+    type: String,
+    required: true,
+  },
+  about: {
+    type: String,
+  },
+  gh_link: {
+    type: String,
+    required: true,
+    unique: true,
   },
 });
 
