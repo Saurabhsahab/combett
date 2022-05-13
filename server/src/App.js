@@ -49,7 +49,7 @@ app.delete("/user/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const data = await user.findByIdAndDelete(id);
-    res.status(200).send("Interview Experience Deleted!");
+    res.status(200).send("User Deleted!");
   } catch (error) {
     res.status(204).json({ message: error.message });
   }
@@ -97,7 +97,7 @@ app.delete("/skill/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const data = await skill.findByIdAndDelete(id);
-    res.status(200).send("Interview Experience Deleted!");
+    res.status(200).send("Skill Deleted!");
   } catch (error) {
     res.status(204).json({ message: error.message });
   }
