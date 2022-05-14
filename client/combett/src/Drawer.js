@@ -95,18 +95,13 @@ navigate(e.nav)
 var userdata=false;
 var CryptoJS=require("crypto-js");
   useEffect(()=>{
-
-
-    var udata=localStorage.getItem('user');
-    if(udata)
-   { var bytes  = CryptoJS.AES.decrypt(udata.toString(), 'somekey');
-    var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-    // userdata=decryptedData;
-    setdata(decryptedData)
-    // console.log(userdata)
-  }
-
-    else navigate("/si")
+  //   var udata=localStorage.getItem('user');
+  //   if(udata==null)
+  //   {navigate("/si");
+  // }
+  //   else console.log(udata);
+   
+  
     },[])
 
 
@@ -132,12 +127,9 @@ return (<>
   
 
   </div>
-  <div style={{display:'flex',alignItems:'center'}} onClick={navigate("/self")}>
-    <Avatar> { `${data?data.givenName[0]:' '}`}</Avatar>
-   {/* { `${data.givenName}`} */}
+ 
+  </div>
 
-  </div>
-  </div>
  <Box
         component="div"
         sx={{ width: { sm: 0 ,xs :0}, flexShrink: { sm: 0 } }}

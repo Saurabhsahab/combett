@@ -6,9 +6,6 @@ const skill = require("../models/skill");
 const user = require("../models/user");
 const port = process.env.PORT || 3000;
 app.use(express.json());
-
-// user endpoints
-
 app.post("/user", async (req, res) => {
   try {
     const a = new user(req.body);

@@ -26,13 +26,13 @@ root.render(
 <BrowserRouter>
 <Routes>
            {/* <Route path="/" element={<Drawer />} /> */}
+           <Route path="/" element={<SignIn />} />
   
         <Route exact path="/Blogs" element={<Home />} />
            <Route path="/Blogs/:code" element={<BlogOpen />} />
 
     
         {/* <Route path="/" element={<Navbar />} /> */}
-        <Route path="/si" element={<SignIn />} />
         <Route path="/create" element={<CreatePost />} />
         <Route path="/self" element={<SelfUser />} />
 

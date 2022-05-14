@@ -1,0 +1,16 @@
+.details{
+    display: flex;
+    flex-direction: column;
+}
+.boldtext{
+    font-weight: 800;
+}
+.details div{
+    /* background-color: pink; */
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.chip{
+    margin: 10px;
+}
