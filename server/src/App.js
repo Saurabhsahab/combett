@@ -6,6 +6,7 @@ const skill = require("../models/skill");
 const user = require("../models/user");
 const port = process.env.PORT || 3000;
 app.use(express.json());
+
 app.post("/user", async (req, res) => {
   try {
     const a = new user(req.body);
@@ -110,19 +111,6 @@ app.post("/skill", async (req, res) => {
     res.status(201).send(gg);
   } catch (e) {
     res.status(400).send(e);
-  }
-});
-
-app.get("/skillall", async (req, res) => {
-  try {
-    const a = await skill.find({});
-    if (!a) {
-      res.status(404).send();
-    } else {
-      res.status(200).send(a);
-    }
-  } catch (e) {
-    res.status(500).send(e);
   }
 });
 
@@ -281,22 +269,6 @@ app.patch("/experienceid/:id", async (req, res) => {
     const options = { new: true };
     const result = await experience.findByIdAndUpdate(
       _id,
-      updatedData,
-      options
-    );
-    res.status(200).send(result);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-app.patch("/experiencesid/:s_id", async (req, res) => {
-  try {
-    const s_id = req.params.s_id;
-    const updatedData = req.body;
-    const options = { new: true };
-    const result = await experience.findByIdAndUpdate(
-      s_id,
       updatedData,
       options
     );
