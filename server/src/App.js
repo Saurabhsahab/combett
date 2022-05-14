@@ -60,7 +60,7 @@ app.patch("/useremail/:email", async (req, res) => {
     const email = req.params.email;
     const updatedData = req.body;
     const options = { new: true };
-    const result = await user.findByIdAndUpdate(email, updatedData, options);
+    const result = await user.findAndModify(email, updatedData, options);
     res.status(200).send(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -156,7 +156,7 @@ app.patch("/skillsid/:s_id", async (req, res) => {
     const s_id = req.params.s_id;
     const updatedData = req.body;
     const options = { new: true };
-    const result = await skill.findByIdAndUpdate(s_id, updatedData, options);
+    const result = await skill.findAndModify(s_id, updatedData, options);
     res.status(200).send(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -167,7 +167,7 @@ app.delete("/skillid/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const data = await skill.findByIdAndDelete(id);
-    res.status(200).send("User Deleted!");
+    res.status(200).send("Particular skill of current user Deleted!");
   } catch (error) {
     res.status(204).json({ message: error.message });
   }
@@ -176,8 +176,8 @@ app.delete("/skillid/:id", async (req, res) => {
 app.delete("/skillsid/:s_id", async (req, res) => {
   try {
     const s_id = req.params.s_id;
-    const data = await akill.findOneAndDelete({ s_id: s_id });
-    res.status(200).send("User Deleted!");
+    const data = await skill.deleteMany({ s_id: s_id });
+    res.status(200).send("All skills of cuurent user Deleted!");
   } catch (error) {
     res.status(204).json({ message: error.message });
   }
@@ -271,7 +271,7 @@ app.delete("/experienceid/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const data = await experience.findByIdAndDelete(id);
-    res.status(200).send("User Deleted!");
+    res.status(200).send("Particular Experience Deleted!");
   } catch (error) {
     res.status(204).json({ message: error.message });
   }
@@ -280,8 +280,8 @@ app.delete("/experienceid/:id", async (req, res) => {
 app.delete("/experiencesid/:s_id", async (req, res) => {
   try {
     const s_id = req.params.s_id;
-    const data = await akill.findOneAndDelete({ s_id: s_id });
-    res.status(200).send("User Deleted!");
+    const data = await akill.deleteMany({ s_id: s_id });
+    res.status(200).send("All experience Deleted!");
   } catch (error) {
     res.status(204).json({ message: error.message });
   }
