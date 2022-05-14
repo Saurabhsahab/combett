@@ -7,10 +7,12 @@
     left: 0px;
     /* padding: 10px; */
     display: flex;
+    z-index:1;
     padding: 0 10px;
     flex-direction: row;
 justify-content: space-between;
 align-items: center;
+background-color: white;
 }
 .links a{
 text-decoration: none;

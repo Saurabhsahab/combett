@@ -2,48 +2,51 @@ import ReactDOM from "react-dom/client";
 import {
   BrowserRouter,
   Routes,
-  Route,
-
+  Route
 } from "react-router-dom";
 // import Home from "./App.js";
 import SignIn from "./SignIn.js";
 import Default from "./Default.js";
+// import {} from "@"
 // import Expenses from "./routes/expenses";
 // import Invoices from "./routes/invoices";
 import Home from "./Home.js";
 import Navbar from "./Navbar.js";
 import CreatePost from "./CreatePost.js";
 import { AnimatePresence } from "framer-motion";
-
+import BlogOpen from "./BlogOpen"
+import Drawer from "./Drawer"
+import SelfUser from "./SelfUser.js";
 const root = ReactDOM.createRoot(
   document.getElementById("root")
 );
 root.render(
   <AnimatePresence>
-  {/* <Component key={router.route} {...pageProps} /> */}
+    {/* <Component key={router.route} {...pageProps} /> */}
+<BrowserRouter>
+<Routes>
+           {/* <Route path="/" element={<Drawer />} /> */}
+  
+        <Route exact path="/Blogs" element={<Home />} />
+           <Route path="/Blogs/:code" element={<BlogOpen />} />
 
-  <BrowserRouter>
-  {/* <Navbar /> */}
-    <Routes>
+    
+        {/* <Route path="/" element={<Navbar />} /> */}
+        <Route path="/si" element={<SignIn />} />
+        <Route path="/create" element={<CreatePost />} />
+        <Route path="/self" element={<SelfUser />} />
 
-      {/* <Route path="/" element={<Navbar />} /> */}
-      <Route path="/si" element={<SignIn />} />
-      <Route path="/create" element={<CreatePost />} />
+        {/* <Route path="/blog/" element={<BlogOpen/>}/> */}
+        <Route  path="*" element={<Default/>} />
 
-      <Route path="/home" element={<Home />} />
+        {/* <Redirect from='default' /> */}
+        {/* <Route path="" element={<SignIn />} /> */}
 
-      <Route path="*" element={<Default/>} />
-
-      {/* <Redirect from='default' /> */}
-      {/* <Route path="" element={<SignIn />} /> */}
-
-      {/* <Route path="invoices" element={<Invoices />} /> */}
-    </Routes>
-  </BrowserRouter>
+        {/* <Route path="invoices" element={<Invoices />} /> */}
+      </Routes>
+    
+    </BrowserRouter>
   </AnimatePresence>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
+

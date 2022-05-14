@@ -7,7 +7,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import cryptoJs from 'crypto-js';
-
+import { Link } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
@@ -27,18 +27,20 @@ const drawerWidth = 240;
 function ResponsiveDrawer(props) {
   const navigate=useNavigate();
   const { window } = props;
+  const [data, setdata] = React.useState(false);
+
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  var sinout=userdata?
+  var sinout=data?
   {nav:'/si',text:'SIgn IN',icon:''}:{nav:'/so',text:'SIgn out',icon:''};
 
  let listitems=[
   {nav:'/people',text:'All People',icon:''},
-  {nav:'/home',text:'Home',icon:''},
+  {nav:'/Blogs',text:'Home',icon:''},
   {nav:'/create',text:'Publish',icon:''},
 
 
@@ -78,7 +80,7 @@ navigate(e.nav)
 
         ))}
         <ListItem key='so' disablePadding onClick={()=>{
-          userdata?handlesignout():navigate("/si")
+          handlesignout()
                       }}>
                       
                         <ListItemButton>
@@ -99,17 +101,16 @@ var CryptoJS=require("crypto-js");
     if(udata)
    { var bytes  = CryptoJS.AES.decrypt(udata.toString(), 'somekey');
     var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-    userdata=decryptedData;
-    setdata(userdata)
+    // userdata=decryptedData;
+    setdata(decryptedData)
     // console.log(userdata)
   }
 
     else navigate("/si")
-    },[userdata])
+    },[])
 
 
 
-  const [data, setdata] = React.useState(false);
 
   const container = window !== undefined ? () => window().document.body : undefined;
 return (<>
@@ -126,12 +127,12 @@ return (<>
     )})
   
     }
-    <a href="/home" onClick={()=>handlesignout() }>Sign Out</a>
+    <a href="/Blogs" onClick={()=>handlesignout() }>Sign Out</a>
   
   
 
   </div>
-  <div style={{display:'flex',alignItems:'center'}}>
+  <div style={{display:'flex',alignItems:'center'}} onClick={navigate("/self")}>
     <Avatar> { `${data?data.givenName[0]:' '}`}</Avatar>
    {/* { `${data.givenName}`} */}
 
@@ -159,7 +160,7 @@ return (<>
         >
           {drawer}
         </Drawer>
-       
+       {/* <Outlet/> */}
       </Box></>)
   
 }

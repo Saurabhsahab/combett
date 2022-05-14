@@ -13,9 +13,10 @@
 
   
 
-.containert{
+.container{
     min-height: 100vh;
-    background-color: pink;
+
+    background-color: var(--light-grey);
 }
 
 .banner-home{
