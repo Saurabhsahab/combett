@@ -17,6 +17,19 @@ app.post("/user", async (req, res) => {
   }
 });
 
+app.get("/userall", async (req, res) => {
+  try {
+    const a = await user.find({});
+    if (!a) {
+      res.status(404).send();
+    } else {
+      res.status(200).send(a);
+    }
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
+
 app.get("/useremail/:email", async (req, res) => {
   try {
     const a = await user.find({ email: req.params.email });
@@ -97,6 +110,19 @@ app.post("/skill", async (req, res) => {
     res.status(201).send(gg);
   } catch (e) {
     res.status(400).send(e);
+  }
+});
+
+app.get("/skillall", async (req, res) => {
+  try {
+    const a = await skill.find({});
+    if (!a) {
+      res.status(404).send();
+    } else {
+      res.status(200).send(a);
+    }
+  } catch (e) {
+    res.status(500).send(e);
   }
 });
 
@@ -193,6 +219,19 @@ app.post("/experience", async (req, res) => {
     res.status(201).send(gg);
   } catch (e) {
     res.status(400).send(e);
+  }
+});
+
+app.get("/experienceall", async (req, res) => {
+  try {
+    const a = await experience.find({});
+    if (!a) {
+      res.status(404).send();
+    } else {
+      res.status(200).send(a);
+    }
+  } catch (e) {
+    res.status(500).send(e);
   }
 });
 
