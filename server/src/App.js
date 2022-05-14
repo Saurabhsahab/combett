@@ -20,7 +20,7 @@ app.post("/user", async (req, res) => {
   }
 });
 
-app.get("/user/:email", async (req, res) => {
+app.get("/useremail/:email", async (req, res) => {
   try {
     const a = await user.find({ email: req.params.email });
     if (!a) {
@@ -33,7 +33,7 @@ app.get("/user/:email", async (req, res) => {
   }
 });
 
-app.get("/user/:id", async (req, res) => {
+app.get("/userid/:id", async (req, res) => {
   try {
     const a = await user.find({ _id: req.params.id });
     if (!a) {
@@ -46,19 +46,31 @@ app.get("/user/:id", async (req, res) => {
   }
 });
 
-app.patch("/user/:id", async (req, res) => {
+app.patch("/userid/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const updatedData = req.body;
     const options = { new: true };
     const result = await user.findByIdAndUpdate(id, updatedData, options);
-    res.status(204).send(result);
+    res.status(200).send(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-app.delete("/user/:id", async (req, res) => {
+app.patch("/useremail/:email", async (req, res) => {
+  try {
+    const email = req.params.email;
+    const updatedData = req.body;
+    const options = { new: true };
+    const result = await user.findByIdAndUpdate(email, updatedData, options);
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+app.delete("/userid/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const data = await user.findByIdAndDelete(id);
@@ -68,10 +80,10 @@ app.delete("/user/:id", async (req, res) => {
   }
 });
 
-app.delete("/user/:email", async (req, res) => {
+app.delete("/useremail/:email", async (req, res) => {
   try {
-    const id = req.params.email;
-    const data = await user.findAndDelete({ email: id });
+    const email = req.params.email;
+    const data = await user.findOneAndDelete({ email: email });
     res.status(200).send("User Deleted!");
   } catch (error) {
     res.status(204).json({ message: error.message });
@@ -91,9 +103,9 @@ app.post("/skill", async (req, res) => {
   }
 });
 
-app.get("/skill/:id", async (req, res) => {
+app.get("/skillname/:name", async (req, res) => {
   try {
-    const a = await skill.find({ s_id: req.params.id });
+    const a = await skill.find({ skill_name: req.params.name });
     if (!a) {
       res.status(404).send();
     } else {
@@ -104,9 +116,9 @@ app.get("/skill/:id", async (req, res) => {
   }
 });
 
-app.get("/skill", async (req, res) => {
+app.get("/skillid/:id", async (req, res) => {
   try {
-    const a = await skill.find({});
+    const a = await skill.find({ _id: req.params.id });
     if (!a) {
       res.status(404).send();
     } else {
@@ -117,23 +129,58 @@ app.get("/skill", async (req, res) => {
   }
 });
 
-app.patch("/skill/:id", async (req, res) => {
+app.get("/skillsid/:s_id", async (req, res) => {
   try {
-    const id = req.params.id;
+    const a = await skill.find({ s_id: req.params.s_id });
+    if (!a) {
+      res.status(404).send();
+    } else {
+      res.status(200).send(a);
+    }
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
+
+app.patch("/skillid/:id", async (req, res) => {
+  try {
+    const _id = req.params.id;
     const updatedData = req.body;
     const options = { new: true };
-    const result = await skill.findByIdAndUpdate(id, updatedData, options);
-    res.status(204).send(result);
+    const result = await skill.findByIdAndUpdate(_id, updatedData, options);
+    res.status(200).send(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-app.delete("/skill/:id", async (req, res) => {
+app.patch("/skillsid/:s_id", async (req, res) => {
+  try {
+    const s_id = req.params.s_id;
+    const updatedData = req.body;
+    const options = { new: true };
+    const result = await skill.findByIdAndUpdate(s_id, updatedData, options);
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+app.delete("/skillid/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const data = await skill.findByIdAndDelete(id);
-    res.status(200).send("Skill Deleted!");
+    res.status(200).send("User Deleted!");
+  } catch (error) {
+    res.status(204).json({ message: error.message });
+  }
+});
+
+app.delete("/skillsid/:s_id", async (req, res) => {
+  try {
+    const s_id = req.params.s_id;
+    const data = await akill.findOneAndDelete({ s_id: s_id });
+    res.status(200).send("User Deleted!");
   } catch (error) {
     res.status(204).json({ message: error.message });
   }
@@ -152,9 +199,9 @@ app.post("/experience", async (req, res) => {
   }
 });
 
-app.get("/experience/:id", async (req, res) => {
+app.get("/experiencecname/:c_name", async (req, res) => {
   try {
-    const a = await experience.find({ s_id: req.params.id });
+    const a = await experience.find({ c_name: req.params.c_name });
     if (!a) {
       res.status(404).send();
     } else {
@@ -165,9 +212,9 @@ app.get("/experience/:id", async (req, res) => {
   }
 });
 
-app.get("/experience/", async (req, res) => {
+app.get("/experienceid/:id", async (req, res) => {
   try {
-    const a = await experience.find({});
+    const a = await experience.find({ _id: req.params.id });
     if (!a) {
       res.status(404).send();
     } else {
@@ -178,23 +225,66 @@ app.get("/experience/", async (req, res) => {
   }
 });
 
-app.patch("/experience/:id", async (req, res) => {
+app.get("/experiencesid/:s_id", async (req, res) => {
   try {
-    const id = req.params.id;
+    const a = await experience.find({ s_id: req.params.s_id });
+    if (!a) {
+      res.status(404).send();
+    } else {
+      res.status(200).send(a);
+    }
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
+
+app.patch("/experienceid/:id", async (req, res) => {
+  try {
+    const _id = req.params.id;
     const updatedData = req.body;
     const options = { new: true };
-    const result = await experience.findByIdAndUpdate(id, updatedData, options);
-    res.status(204).send(result);
+    const result = await experience.findByIdAndUpdate(
+      _id,
+      updatedData,
+      options
+    );
+    res.status(200).send(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-app.delete("/experience/:id", async (req, res) => {
+app.patch("/experiencesid/:s_id", async (req, res) => {
+  try {
+    const s_id = req.params.s_id;
+    const updatedData = req.body;
+    const options = { new: true };
+    const result = await experience.findByIdAndUpdate(
+      s_id,
+      updatedData,
+      options
+    );
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+app.delete("/experienceid/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const data = await experience.findByIdAndDelete(id);
-    res.status(200).send("Interview Experience Deleted!");
+    res.status(200).send("User Deleted!");
+  } catch (error) {
+    res.status(204).json({ message: error.message });
+  }
+});
+
+app.delete("/experiencesid/:s_id", async (req, res) => {
+  try {
+    const s_id = req.params.s_id;
+    const data = await akill.findOneAndDelete({ s_id: s_id });
+    res.status(200).send("User Deleted!");
   } catch (error) {
     res.status(204).json({ message: error.message });
   }
