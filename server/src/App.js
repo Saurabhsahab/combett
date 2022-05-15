@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-var cors=require("cors");
+var cors = require("cors");
 require("../dbcoo");
 const experience = require("../models/exp");
 const skill = require("../models/skill");
@@ -8,9 +8,9 @@ const user = require("../models/user");
 const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cors());
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-     next();
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+  next();
 });
 app.post("/user", async (req, res) => {
   try {
@@ -39,7 +39,7 @@ app.get("/userall", async (req, res) => {
 app.get("/useremail/:email", async (req, res) => {
   try {
     const a = await user.find({ email: req.params.email });
-    if (!a) {
+    if (a.length == 0) {
       res.status(404).send();
     } else {
       res.status(200).send(a);
@@ -52,7 +52,7 @@ app.get("/useremail/:email", async (req, res) => {
 app.get("/userid/:id", async (req, res) => {
   try {
     const a = await user.find({ _id: req.params.id });
-    if (!a) {
+    if (a.length == 0) {
       res.status(404).send();
     } else {
       res.status(200).send(a);
@@ -122,7 +122,7 @@ app.post("/skill", async (req, res) => {
 app.get("/skillname/:name", async (req, res) => {
   try {
     const a = await skill.find({ skill_name: req.params.name });
-    if (!a) {
+    if (a.length == 0) {
       res.status(404).send();
     } else {
       res.status(200).send(a);
@@ -135,7 +135,7 @@ app.get("/skillname/:name", async (req, res) => {
 app.get("/skillid/:id", async (req, res) => {
   try {
     const a = await skill.find({ _id: req.params.id });
-    if (!a) {
+    if (a.length == 0) {
       res.status(404).send();
     } else {
       res.status(200).send(a);
@@ -148,7 +148,7 @@ app.get("/skillid/:id", async (req, res) => {
 app.get("/skillsid/:s_id", async (req, res) => {
   try {
     const a = await skill.find({ s_id: req.params.s_id });
-    if (!a) {
+    if (a.length == 0) {
       res.status(404).send();
     } else {
       res.status(200).send(a);
@@ -218,7 +218,7 @@ app.post("/experience", async (req, res) => {
 app.get("/experienceall", async (req, res) => {
   try {
     const a = await experience.find({});
-    if (!a) {
+    if (a.length == 0) {
       res.status(404).send();
     } else {
       res.status(200).send(a);
@@ -231,7 +231,7 @@ app.get("/experienceall", async (req, res) => {
 app.get("/experiencecname/:c_name", async (req, res) => {
   try {
     const a = await experience.find({ c_name: req.params.c_name });
-    if (!a) {
+    if (a.length == 0) {
       res.status(404).send();
     } else {
       res.status(200).send(a);
@@ -244,7 +244,7 @@ app.get("/experiencecname/:c_name", async (req, res) => {
 app.get("/experienceid/:id", async (req, res) => {
   try {
     const a = await experience.find({ _id: req.params.id });
-    if (!a) {
+    if (a.length == 0) {
       res.status(404).send();
     } else {
       res.status(200).send(a);
@@ -257,7 +257,7 @@ app.get("/experienceid/:id", async (req, res) => {
 app.get("/experiencesid/:s_id", async (req, res) => {
   try {
     const a = await experience.find({ s_id: req.params.s_id });
-    if (!a) {
+    if (a.length == 0) {
       res.status(404).send();
     } else {
       res.status(200).send(a);
