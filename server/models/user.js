@@ -27,8 +27,7 @@ const usersch = new mongoose.Schema({
   },
   pf_img: {
     type: String,
-    required: true,
-    unique: true,
+    // required: true,,
   },
   present_company: {
     type: String,

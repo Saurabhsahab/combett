@@ -40,6 +40,23 @@ function CreatePost() {
       console.log(editorRef.current.getContent());
     }
   };
+ 
+  // c_name: {
+  //   type: String,
+  //   required: [true, "Please enter valid company name"],
+  // },
+  // created_at: { type: Date, default: Date.now },
+
+  // title: {
+  //   type: String,
+  //   required: true,
+  // },
+
+  // description: {
+  //   type: String,
+  //   required: true,
+  // },
+
 
     return (
         <div className='home-cont'>
@@ -47,56 +64,24 @@ function CreatePost() {
            <div className='cont'>
       
                Create New Post
-               <span>Topic Title
-                   </span>
+         
 
-          <TextField variant='filled'  inputProps={{style: {fontSize: 40,paddingTop:0}}}/>
+          <TextField multiline margin='dense' label="Title for the Experience" />
+          <TextField margin='dense' label="Company Name" />
+         
          <div style={{margin:'10px 0px'}}>
         
          <Editor
         onInit={(evt, editor) => editorRef.current = editor}
         initialValue=" "
+      
         init={{
           height: 500,
           
           menubar: false,
           fontsize_formats:"8px 9pt 10pt 11pt 12pt 14pt 18pt 24pt 30pt 36pt 48pt 60pt 72pt 96pt",
 
-          file_browser_callback: function(field_name, url, type, win) {
-            win.document.getElementById(field_name).value = 'my browser value';},
-          selector: 'textarea#file-picker',  // change this value according to your HTML
-            image_title:true,
-          plugins:  'image',
-          automatic_uploads:true,
-          file_picker_callback: (cb, value, meta) => {
-            const input = document.createElement('input');
-            input.setAttribute('type', 'file');
-            input.setAttribute('accept', 'image/*');
-            input.addEventListener('change', (e) => {
-              const file = e.target.files[0];
-        
-              const reader = new FileReader();
-              
-              reader.addEventListener('load', () => {
-                /*
-                  Note: Now we need to register the blob in TinyMCEs image blob
-                  registry. In the next release this part hopefully won't be
-                  necessary, as we are looking to handle it internally.
-                */
-                const id = 'blobid' + (new Date()).getTime();
-              const blobCache=this.editorUpload.blobCache
-                const base64 = reader.result.split(',')[1];
-                const blobInfo = blobCache.create(id, file, base64);
-                blobCache.add(blobInfo);
-        
-                /* call the callback and populate the Title field with the file name */
-                // cb(blobInfo.blobUri(), { title: file.name });
-              });
-              reader.readAsDataURL(file);
-            });
-        
-            input.click();
-          },
+          
           toolbar: 'undo redo | blocks | image |' +
           'bold italic forecolor fontsizeselect| alignleft aligncenter ' +
           'alignright alignjustify | bullist numlist outdent indent | ' +

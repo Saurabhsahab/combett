@@ -3,19 +3,24 @@ import GoogleLogin from 'react-google-login'
 import { useHistory } from "react-router-dom";
 // import { useEffect } from 'react';
 // import redirec
+import getuserdetails from "./Requests"
 import { useNavigate } from "react-router-dom";
 
 function GoolgeLogin() {
     var CryptoJS = require("crypto-js");
     let navigate=useNavigate();
-const onSuccess=(res)=>{
-    console.log("siuccess :", res.profileObj);
 
-    navigate(`/home`);
+
+
+
+    const onSuccess=(res)=>{
+    console.log("success :", res.profileObj);
     const skey=process.env.REACT_APP_GOOGLE_CLIENT_ID;
     var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(res.profileObj), "somekey").toString();
     localStorage.setItem('user',ciphertext);
+    navigate(`/loading`+res.profileObj.email);
 
+   
 }
 
 

@@ -37,9 +37,9 @@ function Blogs() {
             <div className='blog-cont'>
 
                 <div className='blog'>
-                    <img src='https://miro.medium.com/max/1400/1*CRna4vgbl8IAbZMTwlwSTw.jpeg' width={300}>
-
-                    </img>
+                    <div className='cmpny'>
+                        Amazon
+                        </div>
 
                     <span className='title'>
                         How to Ask for refferal | Guide to refferals

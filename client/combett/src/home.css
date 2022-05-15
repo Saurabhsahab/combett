@@ -40,7 +40,7 @@ align-items: center;
 .home-searchbar input{
 font-family: 'Raleway', sans-serif ;
 font-size: 1.2rem;
-width: 40%;
+width: 100%;
 margin: 1vh;
 }
 .home-searchbar{
