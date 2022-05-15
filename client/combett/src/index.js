@@ -5,6 +5,7 @@ import {
   Route
 } from "react-router-dom";
 // import Home from "./App.js";
+import Allpeople from "./Allpeople"
 import SignIn from "./SignIn.js";
 import Default from "./Default.js";
 // import {} from "@"
@@ -27,6 +28,7 @@ root.render(
 <Routes>
            {/* <Route path="/" element={<Drawer />} /> */}
            <Route path="/" element={<SignIn />} />
+           <Route exact path="/Allpeople" element={<Allpeople />} />
   
         <Route exact path="/Blogs" element={<Home />} />
            <Route path="/Blogs/:code" element={<BlogOpen />} />

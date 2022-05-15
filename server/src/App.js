@@ -1,12 +1,17 @@
 const express = require("express");
 const app = express();
+var cors=require("cors");
 require("../dbcoo");
 const experience = require("../models/exp");
 const skill = require("../models/skill");
 const user = require("../models/user");
 const port = process.env.PORT || 3000;
 app.use(express.json());
-
+app.use(cors());
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+     next();
+});
 app.post("/user", async (req, res) => {
   try {
     const a = new user(req.body);

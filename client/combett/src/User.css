@@ -1,16 +1,38 @@
 .details{
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }
 .boldtext{
     font-weight: 800;
 }
+.details form{
+    /* background-color: black; */
+    width: 100%;
+    /* height: 100%; */
+}
 .details div{
     /* background-color: pink; */
     display: flex;
+    /* padding-top: 2px; */
     width: 100%;
+    /* height: 40px; */
+    /* margin-top: 10px; */
     justify-content: space-between;
 }
 .chip{
     margin: 10px;
+}
+#skill{
+/* padding: 10px; */
+
+}
+@media only screen and (min-width: 900px)
+{
+    .details{
+        width: 70%;
+    }
 }
