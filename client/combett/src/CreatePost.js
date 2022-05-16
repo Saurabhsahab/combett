@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import  "./home.css"
 import  "./cp.css"
 import TextField from '@mui/material/TextField';
@@ -6,32 +6,64 @@ import { useState } from 'react';
 import { useRef } from 'react';
 import axios from "./axios"
 import { Editor } from '@tinymce/tinymce-react';
-import { Button } from '@mui/material';
+import { Alert, Button, Slide, Snackbar } from '@mui/material';
 import Drawer from "./Drawer"
+import zIndex from '@mui/material/styles/zIndex';
+// import { Snackbar } from '@mui/material';
 function CreatePost() {
+  var CryptoJS = require('crypto-js');
+  var udata = localStorage.getItem('user');
 
-  const postreq=()=>{
-    axios({
-      method: "post",
-      url: "myurl",
-      data: bodyFormData,
-      headers: { "Content-Type": "multipart/form-data" },
-    })
+
+  //derpyed data;
+  var CryptoJS = require("crypto-js");
+  const v = localStorage.getItem('user');
+  var decrypted = CryptoJS.AES.decrypt(v, "somekey");
+  var ans = JSON.parse(CryptoJS.enc.Utf8.stringify(decrypted));
+  const bearer = process.env.bearer;
+const {email
+  ,familyName
+  ,givenName
+  ,googleId
+  ,imageUrl}=ans;
+
+
+
+  const createexp = async (data) => {
+    console.log(data);
+    var config = {
+    data:data,
+      method: 'post',
+      url: '/experience',
+      headers: {
+        'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzMzY3NTU0LCJpYXQiOjE2NDI5MzU1NTQsImp0aSI6IjNlMGYzZTUwMzQ4ZTRkZGVhZjdiNDQ1YTNiOWRmZjM3IiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiU3VkaGFuc2h1IFJhbmphbiJ9.7REJ99i_2WiC-yXEnFeEWsRa-y-44bhoFXZ2GynMT5c',
+        'Content-Type': 'application/json'
+      },
+
+    };
+
+    // 
+    axios(config)
       .then(function (response) {
-        //handle success
-        console.log(response);
+        console.log(response.status)
+        if(response.status==201)
+        {
+          setsnackbaropen(true);
+        }
+
+        console.log(JSON.stringify(response.data));
       })
-      .catch(function (response) {
-        //handle error
-        console.log(response);
+      .catch(function (error) {
+        console.log(error);
       });
-  
-  
+
+
   }
-  var bodyFormData = new FormData();
-  bodyFormData.append('title', 'Fred');
-  bodyFormData.append('data', 'sdfsd'); 
-  
+
+
+
+
+
 
 
   const editorRef = useRef(null);
@@ -40,23 +72,20 @@ function CreatePost() {
       console.log(editorRef.current.getContent());
     }
   };
- 
-  // c_name: {
-  //   type: String,
-  //   required: [true, "Please enter valid company name"],
-  // },
-  // created_at: { type: Date, default: Date.now },
 
-  // title: {
-  //   type: String,
-  //   required: true,
-  // },
+ useEffect(() => {
 
-  // description: {
-  //   type: String,
-  //   required: true,
-  // },
+  document.title="Publish"
+ }, [])
+//  Alert
 
+  const [content, setcontent] = useState("")
+  const handlechanege=(e)=>{
+setcontent( e.target.getContent());
+  }
+
+const form=useRef(null);
+const [snackbaropen, setsnackbaropen] = useState(false)
 
     return (
         <div className='home-cont'>
@@ -65,22 +94,52 @@ function CreatePost() {
       
                Create New Post
          
+               <form className='cpform' ref={form} onSubmit={(e) => {
+              e.preventDefault();
+              const data = new FormData(form.current)
+              var object = {};
+              data.forEach((value, key) => object[key] = value);
+              // var temp =this.get('textAreaName').getContent();
+              // console.log(temp);
+             object['description']=content;
+             object['s_id']=email;
+             
 
-          <TextField multiline margin='dense' label="Title for the Experience" />
-          <TextField margin='dense' label="Company Name" />
+              var json = JSON.stringify(object);
+              // setcuserdata(json);
+              // createuser(object);
+              createexp(object);
+
+
+              console.log(json)
+
+                // var json = JSON.stringify(object);
+
+
+                ;
+            }}>
+
+<div>
+
+<TextField onClick={()=>setsnackbaropen(!snackbaropen)} fullWidth margin='dense' name='title' label="Title for the Experience" />
+          <br/>
+          <TextField fullWidth margin='dense' name='c_name' label="Company Name" />
          
+</div>
          <div style={{margin:'10px 0px'}}>
         
          <Editor
         onInit={(evt, editor) => editorRef.current = editor}
-        initialValue=" "
       
+      name="des" initialValue=""
+      onChange={handlechanege}
         init={{
-          height: 500,
-          
+          height: 300,
+           selector: 'textarea',
+           root_name:"des",
           menubar: false,
           fontsize_formats:"8px 9pt 10pt 11pt 12pt 14pt 18pt 24pt 30pt 36pt 48pt 60pt 72pt 96pt",
-
+         
           
           toolbar: 'undo redo | blocks | image |' +
           'bold italic forecolor fontsizeselect| alignleft aligncenter ' +
@@ -91,11 +150,24 @@ function CreatePost() {
       }
       />
          </div>
-      <Button id="sb" variant='contained' size='large' > Submit</Button>
+      
+      <Button id="sb" type='submit' variant='contained' size='large' > Submit</Button>
+      </form>
     
-      {/* <button onClick={log} className="sbtn">Publish</button> */}
+      
            </div>
-          
+           <Snackbar
+             open={snackbaropen}
+   anchorOrigin={{horizontal:'center',vertical:"top"}}
+            //  TransitionComponent={<Slide direction='up'/>}
+             message="Published Successfully"
+             autoHideDuration={3000}
+             onClose={()=>setsnackbaropen(false)}
+            //  key={transition ? transition.name : ''}
+            >
+           <Alert variant="filled" severity="success">Published Successfully</Alert>
+
+            </Snackbar>
         </div>
     )
 }

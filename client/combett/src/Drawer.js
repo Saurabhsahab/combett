@@ -95,11 +95,7 @@ navigate(e.nav)
 var userdata=false;
 var CryptoJS=require("crypto-js");
   useEffect(()=>{
-  //   var udata=localStorage.getItem('user');
-  //   if(udata==null)
-  //   {navigate("/si");
-  // }
-  //   else console.log(udata);
+ 
    
   
     },[])
@@ -122,7 +118,7 @@ return (<>
     )})
   
     }
-    <a href="/Blogs" onClick={()=>handlesignout() }>Sign Out</a>
+    <a href="/" onClick={()=>handlesignout() }>Sign Out</a>
   
   
 

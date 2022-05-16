@@ -5,9 +5,9 @@ function Default() {
     return (
 
         <div>
-        <Drawer/>
+     
 
-            not found babay
+            rtr
         </div>
     )
 }

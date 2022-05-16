@@ -1,58 +1,72 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Blog.css"
 // import Navigation
 import { Navigate, useNavigate } from 'react-router-dom';
+import {getallexperience} from "./Requests.js";
+import Loader from './Loader';
 
 function Blogs() {
     const Navigate = useNavigate();
-
+// useEffect
     const list = ['a','b','a','b','a','b','a','b','a','b'];
-    const x = 
-        list.map((e,ind) => {
-      return (
-        <div className='blog' key={ind} onClick={()=>Navigate(`s${ind}`)} >
-        <img src='https://miro.medium.com/max/1400/1*CRna4vgbl8IAbZMTwlwSTw.jpeg' width={300}>
+   const [data, setdata] = useState([])
+    async function getexp(){
+        const res=await getallexperience();
+        console.log(JSON.parse(res));
+        setdata(JSON.parse(res));
+    // console.log(data)
+    }
 
-        </img>
+    useEffect(() => {
+        getexp();
+    }, [])
+
+    function removeTags(str) {
+        if ((str===null) || (str===''))
+            return false;
+        else
+            str = str.toString();
+            
+        return str.replace( /(<([^>]+)>)/ig, '');
+    }
+    const nav=useNavigate();
+    const x = 
+        data.map((e,ind) => {
+           const {_id,title,description,create_at,c_name}=e;
+           
+      return (
+        <div className='blog' onClick={()=>{
+            console.log(_id)
+nav(""+_id);
+        }}>
+        <div className='cmpny'>
+         {c_name}
+            </div>
 
         <span className='title'>
-            How to Ask for refferal | Guide to refferals
+           {title}
         </span>
         <div className='info'>
             <span id="tag"> INTERVIEW </span>
             <span> Date</span>
         </div>
         <div className='des'>
-            Asking for refferal may seem very difficult task and it could lead to missing ooppuritnuity in the lack of asking for it to the respective recruiter
+            {removeTags(description)}
         </div>
-    </div>   )        
+    </div>    
 
                 
 
     
-        })
+        )})
     
     return (
         <>
             <div className='blog-cont'>
 
-                <div className='blog'>
-                    <div className='cmpny'>
-                        Amazon
-                        </div>
-
-                    <span className='title'>
-                        How to Ask for refferal | Guide to refferals
-                    </span>
-                    <div className='info'>
-                        <span id="tag"> INTERVIEW </span>
-                        <span> Date</span>
-                    </div>
-                    <div className='des'>
-                        Asking for refferal may seem very difficult task and it could lead to missing ooppuritnuity in the lack of asking for it to the respective recruiter
-                    </div>
-                </div>
-{x}
+         
+{data?x:<Loader/>
+}
             </div></>
     )
 }

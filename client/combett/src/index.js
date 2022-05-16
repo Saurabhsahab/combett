@@ -20,38 +20,36 @@ import Drawer from "./Drawer"
 import SelfUser from "./SelfUser.js";
 import People from "./People";
 import Loading from "./Loading";
+import "./home.css"
 const root = ReactDOM.createRoot(
   document.getElementById("root")
 );
 root.render(
   <AnimatePresence>
-    {/* <Component key={router.route} {...pageProps} /> */}
-<BrowserRouter>
-<Routes>
-           {/* <Route path="/" element={<Drawer />} /> */}
-           {/* <Route path="" element={<SignIn />} /> */}
-           <Route exact path="/people" element={<People />} />
-           <Route path="/" element={<SignIn />} />
-  
-        <Route exact path="/Blogs" element={<Home />} />
-           <Route path="/Blogs/:code" element={<BlogOpen />} />
+    <div className="main">
 
-    
-        {/* <Route path="/" element={<Navbar />} /> */}
-        <Route path="/create" element={<CreatePost />} />
-        <Route path="/self" element={<SelfUser />} />
-        <Route path="/loading:email" element={<Loading />} />
-        
-        {/* <Route path="/blog/" element={<BlogOpen/>}/> */}
-        <Route  path="*" element={<Default/>} />
 
-        {/* <Redirect from='default' /> */}
-        <Route path="" element={<SignIn />} />
+      {/* <Component key={router.route} {...pageProps} /> */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<SignIn />} />
 
-        {/* <Route path="invoices" element={<Invoices />} /> */}
-      </Routes>
-    
-    </BrowserRouter>
+          <Route exact path="/people" element={<People />} />
+
+          <Route exact path="/Blogs" element={<Home />} />
+          <Route path="/Blogs/:code" element={<BlogOpen />} />
+          <Route path="/create" element={<CreatePost />} />
+          <Route path="/self" element={<SelfUser />} />
+          <Route path="/loading:email" element={<Loading />} />
+          <Route path="*" element={<Default />} />
+
+          {/* <Route path="" element={<SignIn />} /> */}
+
+          {/* <Route path="invoices" element={<Invoices />} /> */}
+        </Routes>
+
+      </BrowserRouter>
+    </div>
   </AnimatePresence>
 );
 

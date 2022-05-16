@@ -18,6 +18,9 @@
 
     background-color: var(--light-grey);
 }
+.main{
+    background-color: pink;
+}
 
 .banner-home{
     margin-top: 10vh;
