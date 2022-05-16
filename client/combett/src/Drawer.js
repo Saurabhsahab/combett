@@ -55,6 +55,7 @@ const flexContainer = {
   padding: 0,
 };
 const handlesignout=()=>{
+  navigate("/")
   localStorage.clear();
 }
 

@@ -5,9 +5,7 @@ function Default() {
     return (
 
         <div>
-     
-
-            rtr
+     404 not found
         </div>
     )
 }

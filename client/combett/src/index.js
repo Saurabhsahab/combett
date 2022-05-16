@@ -21,6 +21,7 @@ import SelfUser from "./SelfUser.js";
 import People from "./People";
 import Loading from "./Loading";
 import "./home.css"
+import UserPorfile from "./UserPorfile";
 const root = ReactDOM.createRoot(
   document.getElementById("root")
 );
@@ -42,6 +43,7 @@ root.render(
           <Route path="/self" element={<SelfUser />} />
           <Route path="/loading:email" element={<Loading />} />
           <Route path="*" element={<Default />} />
+          <Route path="/user/:id" element={<UserPorfile />} />
 
           {/* <Route path="" element={<SignIn />} /> */}
 

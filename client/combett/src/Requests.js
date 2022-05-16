@@ -49,6 +49,7 @@ async function getuserdetails(email) {
     },
 
   };
+  
 
   return axios(config)
     .then(function (response) {
@@ -64,6 +65,43 @@ async function getuserdetails(email) {
 
 
 }
+async function getuserdetailsbyid(id) {
+  // console.log(email);
+  // const navigate=useNavigate();
+  const bearer = process.env.bearer;
+  var config = {
+    // data : data,
+    method: 'get',
+    url: '/userid/' + id,
+    headers: {
+      'Authorization': 'Bearer' + bearer,
+      'Content-Type': 'text/plain'
+    },
+
+  };
+  
+
+  return axios(config)
+    .then(function (response) {
+      const x = JSON.stringify(response.data);
+      console.log(response.data);
+      console.log(response.status)
+      return x;
+
+
+    })
+    .catch(function (error) {
+      
+
+      return error.response.status;
+   
+    });
+
+
+}
+
+
+
 async function blogdetailid(id) {
   // console.log(email);
   // const navigate=useNavigate();
@@ -84,11 +122,11 @@ async function blogdetailid(id) {
       const x = JSON.stringify(response.data);
       console.log(response.data);
       return x;
-
-
     })
     .catch(function (error) {
       console.log(error);
+      
+      return error;
     });
 
 
@@ -123,5 +161,5 @@ async function getallexperience() {
 
 }
 
-export {getallusers,blogdetailid, getuserdetails,getallexperience };
+export {getallusers,getuserdetailsbyid,blogdetailid, getuserdetails,getallexperience };
 // export default 

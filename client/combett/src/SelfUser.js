@@ -55,16 +55,15 @@ const {email
       },
 
     };
-    // 
+
     axios(config)
       .then(function (response) {
-    if(response.status==200)
-    {
-      navigate
-    }
+    // if(response.status==200)
+    // {
+    
+    // }
         console.log(JSON.stringify(response.data));
-    if
-      })
+  })
       .catch(function (error) {
         console.log(error);
       });
