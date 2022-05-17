@@ -72,15 +72,6 @@ const {email
   }
 
 
-  const data = {
-    fname: "Sudhanshu",
-    lname: "Ranjan",
-    email: "something@gmail.com",
-    batch: "IT-23",
-    // pf_img:"src",
-    present_company: "Google",
-    about: "somethinwerwerwewnj dsnjfns fsjnjs fsdfsdfsd sdjsd gsjg sdgsug sdgsug sgbs g", gh_link: "someloink"
-  }
   const [textValue, setTextValue] = useState("");
 
   const onTextChange = (e) => {

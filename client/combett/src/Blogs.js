@@ -6,9 +6,9 @@ import {getallexperience} from "./Requests.js";
 import Loader from './Loader';
 import { Chip } from '@mui/material';
 
-function Blogs({data}) {
+function Blogs({data,admin}) {
     console.log(data)
-
+console.log(admin)
     const Navigate = useNavigate();
     const [date, setdate] = useState("")
 const d=(mydate)=>{
