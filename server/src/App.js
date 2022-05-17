@@ -12,7 +12,7 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
   next();
 });
-app.post("/user", async (req,    res) => {
+app.post("/user", async (req, res) => {
   try {
     const a = new user(req.body);
     const gg = await a.save();

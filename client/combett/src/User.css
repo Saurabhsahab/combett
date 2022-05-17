@@ -1,38 +1,10 @@
-.details{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-}
-.boldtext{
-    font-weight: 800;
-}
-.details form{
-    /* background-color: black; */
-    width: 100%;
-    /* height: 100%; */
-}
-.details div{
-    /* background-color: pink; */
-    display: flex;
-    /* padding-top: 2px; */
-    width: 100%;
-    /* height: 40px; */
-    /* margin-top: 10px; */
-    justify-content: space-between;
-}
-.chip{
+.uprofile{
+    width: 80vw;
+    background-color: white;
+display: flex;
+align-items: center;
     margin: 10px;
-}
-#skill{
-/* padding: 10px; */
-
-}
-@media only screen and (min-width: 900px)
-{
-    .details{
-        width: 70%;
-    }
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.041);
 }
