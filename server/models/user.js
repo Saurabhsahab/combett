@@ -25,9 +25,11 @@ const usersch = new mongoose.Schema({
     type: String,
     required: true,
   },
+  skills: {
+    type: Array,
+  },
   pf_img: {
     type: String,
-    // required: true,,
   },
   present_company: {
     type: String,
