@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
 
+const db =
+  "mongodb+srv://combetthelp:combetthelp@cluster0.gmqn8.mongodb.net/?retryWrites=true&w=majority";
+
 mongoose
-  .connect("mongodb://localhost:27017/combett")
+  .connect(db)
   .then(() => {
     console.log("Connection is successful");
   })
