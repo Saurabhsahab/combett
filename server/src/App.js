@@ -79,7 +79,7 @@ app.patch("/useremail/:email", async (req, res) => {
     const email = req.params.email;
     const updatedData = req.body;
     const options = { new: true };
-    const result = await user.findAndModify(email, updatedData, options);
+    const result = await user.updateOne({ email: email }, updatedData, options);
     res.status(200).send(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -164,18 +164,6 @@ app.patch("/skillid/:id", async (req, res) => {
     const updatedData = req.body;
     const options = { new: true };
     const result = await skill.findByIdAndUpdate(_id, updatedData, options);
-    res.status(200).send(result);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-app.patch("/skillsid/:s_id", async (req, res) => {
-  try {
-    const s_id = req.params.s_id;
-    const updatedData = req.body;
-    const options = { new: true };
-    const result = await skill.findAndModify(s_id, updatedData, options);
     res.status(200).send(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
