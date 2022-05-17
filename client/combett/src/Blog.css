@@ -4,6 +4,7 @@
     /* flex-direction: column; */
     flex-wrap: wrap;
     align-items: center;
+
     justify-content: center;
 }
 .blog{
@@ -12,13 +13,20 @@
     width: 320px;
     margin: 10px;
     display: flex;
-min-height: 280px;
+  
+min-height: 300px;
 word-break: break-word;
     flex-direction: column;
     border-radius: 10px;
     align-items: center;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.162);
     transition: all 0.2s;
+}
+.profile{
+    min-height: 25vh;
+}
+.short{
+    justify-content: space-between;
 }
 .blog:hover{
     box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.262);
@@ -32,7 +40,7 @@ align-items: center;
 background-color: var(--light-grey);
 flex-direction: column;
 margin-top: 5vh;
-    /* background-color: pink; */
+
 
 }
 .open{
@@ -42,13 +50,13 @@ margin-top: 5vh;
    /* background-color: white; */
    display: flex;
    flex-direction: column;
-   align-items: center;
+   /* align-items: center; */
    
 }
 .open img{
     width: 100%;
     height: 200px;
-    object-fit: cover;
+    object-fit: contain;
 }
 .bcontainer{
 
@@ -84,20 +92,23 @@ font-size: 1.4rem;
     justify-content: space-between;
 
 }
+.blog-des{
+    padding:10px 20px;
+    
+}
 #tag
 {
-  letter-spacing:  7px;
-  font-size: 0.7rem;
+  /* letter-spacing:  7px; */
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  
   
 }
 .title{
-    /* word-wrap: break-word;
-    color: var(--text-light);
-  width: 300px;
-  white-space: nowrap;
-  text-overflow: ellipsis;*/
+  
   font-weight: 800; 
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   overflow: hidden;
 
   display: -webkit-box;

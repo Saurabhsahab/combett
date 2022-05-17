@@ -8,9 +8,7 @@ import {
 import Allpeople from "./Allpeople"
 import SignIn from "./SignIn.js";
 import Default from "./Default.js";
-// import {} from "@"
-// import Expenses from "./routes/expenses";
-// import Invoices from "./routes/invoices";
+// import EditSelf from "./EditSelf";
 import Home from "./Home.js";
 import Navbar from "./Navbar.js";
 import CreatePost from "./CreatePost.js";
@@ -22,6 +20,8 @@ import People from "./People";
 import Loading from "./Loading";
 import "./home.css"
 import UserPorfile from "./UserPorfile";
+import Myprofile from "./Myprofile";
+import EditSelf from "./EditSelf";
 const root = ReactDOM.createRoot(
   document.getElementById("root")
 );
@@ -44,6 +44,8 @@ root.render(
           <Route path="/loading:email" element={<Loading />} />
           <Route path="*" element={<Default />} />
           <Route path="/user/:id" element={<UserPorfile />} />
+          <Route path="/myprofile" element={<Myprofile/>} />
+          <Route path="/editself" element={<EditSelf/>} />
 
           {/* <Route path="" element={<SignIn />} /> */}
 

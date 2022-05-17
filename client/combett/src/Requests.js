@@ -100,6 +100,35 @@ async function getuserdetailsbyid(id) {
 
 }
 
+async function blogdetailbysid(sid) {
+  // console.log(email);
+  // const navigate=useNavigate();
+  const bearer = process.env.bearer;
+  var config = {
+    // data : data,
+    method: 'get',
+    url: 'experiencesid/' + sid,
+    headers: {
+      'Authorization': 'Bearer' + bearer,
+      'Content-Type': 'text/plain'
+    },
+
+  };
+
+  return axios(config)
+    .then(function (response) {
+      const x = JSON.stringify(response.data);
+      console.log(response.data);
+      return x;
+    })
+    .catch(function (error) {
+      console.log(error);
+      
+      return error;
+    });
+
+
+}
 
 
 async function blogdetailid(id) {
@@ -161,5 +190,5 @@ async function getallexperience() {
 
 }
 
-export {getallusers,getuserdetailsbyid,blogdetailid, getuserdetails,getallexperience };
+export {blogdetailbysid,getallusers,getuserdetailsbyid,blogdetailid, getuserdetails,getallexperience };
 // export default 

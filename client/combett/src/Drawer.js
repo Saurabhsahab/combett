@@ -42,6 +42,8 @@ function ResponsiveDrawer(props) {
   {nav:'/people',text:'All People',icon:''},
   {nav:'/Blogs',text:'Home',icon:''},
   {nav:'/create',text:'Publish',icon:''},
+  {nav:'/myprofile',text:'My Profile',icon:''},
+
 
 
  
@@ -110,7 +112,12 @@ return (<>
 
   <div className='Appbar' >
   <span className='tbtn' onClick={handleDrawerToggle} ><MenuIcon/> </span>
-  <span>Mylogo </span>
+  <span style={{marginTop:'10px'}}> 
+    
+    <a href="/blogs">
+    <img src='favicon.ico' height={30}/>
+    </a>
+  </span>
   <div className='links' >
     {listitems.map((e,id)=>{
     return   (<a href={e.nav} key={id}>

@@ -6,54 +6,57 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import "./People.css"
 import Loader from "./Loader"
 import Drawer from "./Drawer"
-function AllPeople() {
+import { Avatar } from '@mui/material';
+function AllPeople({pdata}) {
     const Navigate = useNavigate();
 
-    
-async function getusersall(){
-    const res=await getallusers();
-    console.log(eval(res));
-    // const x=;
-    setdata(JSON.parse(res));
-    // console.log(data)
-}
+    // console.log(pdata)
+
+
 // const [data, setdata] = useState(second)
-const [data, setdata] = useState([])
+const [data, setdata] = useState(false)
 useEffect(() => {
-    getusersall();
+  setdata(pdata);
 }, [])
 
 
-const x=data.map((e,i)=>{
-    const {fname,lname,about,email,gh_link,pf_img,present_company,batch}=e;
-    return (
-        <div className='blog'>
 
-        <span className='title'>
-          {fname}  {lname}
-        
-           
-        </span>
-        
-        <div className='info'>
-        {email}
-            <span id="tag">  {present_company}</span>
-            <span> {batch}</span>
-        </div>
-        <div className='des'>
-            {about}
-        </div>
-    </div>
-    )
-})
 return (
     <>
 
  {/* <Drawer/> */}
         <div className='blog-cont'>
        
-        {!data?<Loader/>:x}
+        {!pdata?<Loader/>:pdata.map((e,i)=>{
+    const {fname,lname,_id,about,email,gh_link,pf_img,present_company,batch}=e;
+    return (
+        <div className='blog profile' onClick={()=>{
+            Navigate("/user/"+_id)
+        }}>
+<Avatar src={pf_img}/> 
+        <span className='title'>
+          {fname}  {lname}<br/> 
        
+        
+        </span>
+           
+        <span  className='title'>
+        
+        @ {batch}
+        </span>
+        
+        <div className='em'>
+        {email}
+        </div>
+        {present_company == 'NAN' ? "Still a student" : ("Working @ " + present_company)}
+
+        <div className='des'>
+            {about}
+        </div>
+    </div>
+    )
+})}
+       {/* {data?"":"nothing here"} */}
         
         </div>
     

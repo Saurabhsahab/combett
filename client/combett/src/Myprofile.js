@@ -1,12 +1,9 @@
-import React, { useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import Loader from './Loader'
-import {getuserdetails} from "./Requests"
-import axios from './axios'
-// impot Loader
-function Loading() {
-
-const x=useParams();
+import React from 'react'
+import { useNavigate } from 'react-router-dom';
+import axios from "./axios"
+import Loader from './Loader';
+function Myprofile() {
+//   useNavigate
 const navigate=useNavigate();
 var CryptoJS = require("crypto-js");
 const v=localStorage.getItem('user');
@@ -30,31 +27,17 @@ var decrypted =     CryptoJS.AES.decrypt(v, "somekey");
 axios(config)
     .then(function (response) {
         const x=JSON.stringify(response.data);
-      console.log(response);
- if(response.data.length==0)
- {navigate("/self")}
- else {navigate("/blogs")}
-   
+   navigate("/user/"+response.data[0]._id)
     })
     .catch(function (error) {
       console.log(error);
     });
     
-      
-    
-
-
-    useEffect(() => {
-// const s= getuserdetails(x);
-// console.log(s)
-    }, [])
-    
   return (
     <div>
-<Loader />
-
+        <Loader/>
     </div>
   )
 }
 
-export default Loading
+export default Myprofile
