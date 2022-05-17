@@ -22,6 +22,7 @@ import "./home.css"
 import UserPorfile from "./UserPorfile";
 import Myprofile from "./Myprofile";
 import EditSelf from "./EditSelf";
+import EditPost from "./EditPost";
 const root = ReactDOM.createRoot(
   document.getElementById("root")
 );
@@ -46,6 +47,7 @@ root.render(
           <Route path="/user/:id" element={<UserPorfile />} />
           <Route path="/myprofile" element={<Myprofile/>} />
           <Route path="/editself" element={<EditSelf/>} />
+          <Route path="/editpost/:id" element={<EditPost/>} />
 
           {/* <Route path="" element={<SignIn />} /> */}
 

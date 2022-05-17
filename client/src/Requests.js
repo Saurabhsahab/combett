@@ -52,8 +52,8 @@ async function deleteexp(expid) {
   return axios(config)
     .then(function (response) {
       const x = JSON.stringify(response.data);
-      console.log(response.data);
-      return x;
+      console.log(response.status);
+      return response.status;
 
 
     })

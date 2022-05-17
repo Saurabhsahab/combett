@@ -6,15 +6,29 @@ min-*/
 min-height: 100vh;
 align-items: center;
 padding:0 10px;
-
+backdrop-filter: blur(10px);
 }
+.home-cont::after {
+    content: "";
+background: url("https://assets.website-files.com/5e51b3b0337309d672efd94c/5e5346352c16e8d69e1649f2_cover_hero-1.svg");
+
+    /* background: url(image.jpg); */
+    opacity: 0.05;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
 .cont{
 background-color: white;
+
 margin: 0 auto;
 width: 70vw;
 padding: 10px;
-/* height: 100vh; */
-margin-top: 8vh;
+min-height: 80vh;
+margin-top: 5vh;
 display: flex;
 flex-direction: column;
 /* align-items: center; */
@@ -24,6 +38,11 @@ border-radius: 10px;
 }
 .cpform input{
 /* background-color: pink; */
+width: 100%;
+}
+.btns{
+display: flex;
+justify-content: space-around;
 width: 100%;
 }
 .MuiButtonBase-root #sb{
@@ -38,8 +57,9 @@ width: 100%;
     padding: 10px;
 }
     @media only screen and (max-width: 900px)
-    {
+    {   
         .cont{
-            width: 90vw;
+            width: 93vw;margin-top: 0px;
+            min-height: 85vh;
         }
     }

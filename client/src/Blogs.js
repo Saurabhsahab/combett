@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import "./Blog.css"
 // import Navigation
-import { Navigate, useNavigate } from 'react-router-dom';
-import { getallexperience, deleteexp } from "./Requests.js";
+import {  useNavigate } from 'react-router-dom';
+import {  deleteexp } from "./Requests.js";
 import Loader from './Loader';
+import { Navigate } from 'react-router-dom';
+import AutoFixNormalIcon from '@mui/icons-material/AutoFixNormal';
+import { Alert,Snackbar } from '@mui/material';
 import { Button, Chip } from '@mui/material';
 import Delete from '@mui/icons-material/Delete';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 function Blogs({ data, admin }) {
-    console.log(data)
-    console.log(admin)
-    const Navigate = useNavigate();
-    const [date, setdate] = useState("")
+    // console.log(data)
+    // console.log(admin);
     const d = (mydate) => {
         var dateObj = new Date(mydate);
         var month = dateObj.getUTCMonth() + 1; //months from 1-12
@@ -20,7 +21,10 @@ function Blogs({ data, admin }) {
 
         return (year + "/" + month + "/" + day);
     }
-   
+    const deleteuser=async ()=>{
+        const res=deleteexp()
+    }
+   const [snackbaropen, setsnackbaropen] = useState(false)
 
     const [blogdata, setdata] = useState([])
     const x =
@@ -31,7 +35,18 @@ function Blogs({ data, admin }) {
             return (
            
                     <div className='blog short'>
+ <Snackbar
+             open={snackbaropen}
+            anchorOrigin={{horizontal:'center',vertical:"top"}}
+            
+             message="Published Successfully"
+             autoHideDuration={2000}
+             onClose={()=>setsnackbaropen(false)}
+            
+            >
+           <Alert variant="filled" severity="success">Deleted Successfully</Alert>
 
+            </Snackbar>
                         <div className='cmpny'>
                             {c_name}
                         </div>
@@ -51,14 +66,48 @@ function Blogs({ data, admin }) {
                             console.log(_id)
                             nav("/blogs/" + _id);
                         }} variant="contained" color="success" endIcon={<ArrowCircleRightIcon />}>Read More</Button>
-                        {admin == s_id ? <Button onClick={() => {
-                            const res = deleteexp(_id);
+                       <div className='btns'>
+                       {admin == s_id ? <Button onClick={() => {
+                            const res =  deleteexp(_id);
+                              res.then(()=>{
+                                setsnackbaropen(!snackbaropen);
+                                
+                            })
+                            res.then(
+                                setTimeout(() => {
+                                    setdata(data.splice(ind,1))
+                                }, 300)
+                            )
+                                
+                           
+                            }
                           
-
-
-                        }} endIcon={<Delete />} fullWidth variant="contained" e>Delete</Button> : ""}
+        }
+                            
+                        endIcon={<Delete />}  variant="contained" e>Delete</Button> : ""}
+                        {admin == s_id ? <Button  onClick={() => {
+                             nav("/editpost/" + _id);
+                            // const res =  deleteexp(_id);
+                            //   res.then(()=>{
+                            //     setsnackbaropen(!snackbaropen);
+                                
+                            // })
+                            // res.then(
+                            //     setTimeout(() => {
+                            //         setdata(data.splice(ind,1))
+                            //     }, 300)
+                            // )
+                                
+                           
+                            }
+                          
+        }
+                            
+                        endIcon={<AutoFixNormalIcon />}  variant="contained" >Edit Post</Button> : ""}
 
                     </div>
+                       </div>
+                       
             
 
 
