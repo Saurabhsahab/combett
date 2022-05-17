@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
+
 import Drawer from '@mui/material/Drawer';
 import cryptoJs from 'crypto-js';
 import { Link } from 'react-router-dom';
@@ -115,7 +116,7 @@ return (<>
   <span style={{marginTop:'10px'}}> 
     
     <a href="/blogs">
-    <img src='favicon.ico' height={30}/>
+    <img src="../favicon.ico" height={30}/>
     </a>
   </span>
   <div className='links' >

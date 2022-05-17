@@ -23,7 +23,7 @@ const [ogdata, setogdata] = useState(data);
 
 async function getexp(){
     const res=await getallexperience();
-    console.log(JSON.parse(res));
+    // console.log(JSON.parse(res));
     setdata(JSON.parse(res));
     setogdata(JSON.parse(res));
 
@@ -36,7 +36,7 @@ getexp();
   document.title="Blogs"
 }, [])
 const handlesearch=(quer)=>{
-console.log(data.length)
+// console.log(data.length)
 const results=[]
 const res=ogdata.filter((item)=>{
     return Object.values(item).join('').toLowerCase().includes(quer.toLowerCase());

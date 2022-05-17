@@ -48,10 +48,6 @@ root.render(
           <Route path="/myprofile" element={<Myprofile/>} />
           <Route path="/editself" element={<EditSelf/>} />
           <Route path="/editpost/:id" element={<EditPost/>} />
-
-          {/* <Route path="" element={<SignIn />} /> */}
-
-          {/* <Route path="invoices" element={<Invoices />} /> */}
         </Routes>
 
       </BrowserRouter>

@@ -20,7 +20,7 @@ function SelfUser() {
   var udata = localStorage.getItem('user');
 
 
-  //derpyed data;
+
   var CryptoJS = require("crypto-js");
   const v = localStorage.getItem('user');
   var decrypted = CryptoJS.AES.decrypt(v, "somekey");

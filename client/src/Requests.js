@@ -18,7 +18,7 @@ async function getallusers() {
   return axios(config)
     .then(function (response) {
       const x = JSON.stringify(response.data);
-      console.log(response.data);
+      // console.log(response.data);
       return x;
 
 
@@ -207,7 +207,7 @@ async function getallexperience() {
   return axios(config)
     .then(function (response) {
       const x = JSON.stringify(response.data);
-      console.log(response.data);
+      // console.log(response.data);
       return x;
 
 

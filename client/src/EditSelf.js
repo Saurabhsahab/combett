@@ -32,32 +32,8 @@ const navigate=useNavigate();
     , googleId
     , imageUrl } = ans;
 
-    const updateuser = async (data) => {
-      console.log(data);
-      
-      var config = {
-        // data : data,
-        method: 'patch',
-        url: '/useremail/'+ans.email,
-        headers: {
-          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzMzY3NTU0LCJpYXQiOjE2NDI5MzU1NTQsImp0aSI6IjNlMGYzZTUwMzQ4ZTRkZGVhZjdiNDQ1YTNiOWRmZjM3IiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiU3VkaGFuc2h1IFJhbmphbiJ9.7REJ99i_2WiC-yXEnFeEWsRa-y-44bhoFXZ2GynMT5c',
-          'Content-Type': 'text/plain'
-        },
-  
-      };
-  
-      axios(config)
-        .then(function (response) {
-      return (response.data);
-          console.log(JSON.stringify(response.data));
-    })
-        .catch(function (error) {
-          console.log(error);
-        });
-  
-  
-    }
 
+const [pc, setpc] = useState("")
     const [about, setabout] = useState("")
 const [fbatch, setfbatch] = useState("")
   // const navigate = useNavigate();
@@ -85,8 +61,10 @@ axios(config)
         setfbatch(res[0].batch);
         setabout(res[0].about);
         setuserdata(res[0]);
-        console.log(res[0].batch)
+        // console.log(res[0].present_company)
+        setpc(res[0].present_company)
         setghlink(res[0].gh_link)
+        
       
  
     })
@@ -123,6 +101,31 @@ const [ghlink, setghlink] = useState("")
   // useNavigate
   const form = useRef(null);
   const [cuserdata, setcuserdata] = useState("");
+  const updateuser = async (gndata) => {
+    // console.log(gndata);
+    
+    var config = {
+      data : gndata,
+      method: 'patch',
+      url: '/userid/'+userdata._id,
+      headers: {
+        'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzMzY3NTU0LCJpYXQiOjE2NDI5MzU1NTQsImp0aSI6IjNlMGYzZTUwMzQ4ZTRkZGVhZjdiNDQ1YTNiOWRmZjM3IiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiU3VkaGFuc2h1IFJhbmphbiJ9.7REJ99i_2WiC-yXEnFeEWsRa-y-44bhoFXZ2GynMT5c',
+        'Content-Type': 'text/plain'
+      },
+
+    };
+
+    axios(config)
+      .then(function (response) {
+       return (response.data);
+        // console.log(JSON.stringify(response.data));
+  })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+
+  }
   return (
     <div>
       <Drawer />
@@ -137,22 +140,23 @@ const [ghlink, setghlink] = useState("")
             <form ref={form} onSubmit={(e) => {
               e.preventDefault();
               const data = new FormData(form.current)
-              console.log(data.values)
+              // console.log(data.values)
 
               var object = {};
               data.forEach((value, key) => object[key] = value);
-              
               var json = JSON.stringify(object);
-        updateuser(json);
+              // console.log(json);
+
+              updateuser(json);
               
             }}>
             
               <TextField pt={2} required name='fname' defaultValue={givenName} label="First Name" id="skill" />
-              <TextField required margin="dense" name='lname' defaultValue={familyName} label="Last Name" id="skill" />
+              <TextField margin="dense" name='lname' defaultValue={familyName} label="Last Name" id="skill" />
               <TextField InputLabelProps={{ shrink: true }} required margin="dense" name="email" value={email} label="Email" id="skill" />
               <TextField onChange={(e)=>setfbatch(e.currentTarget.value)} value={fbatch}  required margin="dense" InputLabelProps={{ shrink: true }} name="batch" defaultValue={fbatch} label="Batch" id="skill" placeholder='IT-23' />
-              <TextField  multiline required margin="dense" name='about' defaultValue= {about} label="About" id="skill" />
-              <TextField  required margin="dense" name='present_company' value={userdata.present_company} label="Present Company" placeholder='NAN' helperText="NAN if you are a student" id="skill" />
+              <TextField onChange={(e)=>setabout(e.currentTarget.value)} InputLabelProps={{ shrink: true }}  multiline margin="dense" name='about' value= {about} label="About" id="skill" />
+              <TextField onChange={(e)=>setpc(e.currentTarget.value)}  InputLabelProps={{ shrink: true }}  required margin="dense" name='present_company' value={pc} label="Present Company" placeholder='NAN' helperText="NAN if you are a student" id="skill" />
               <TextField onChange={(e)=>setghlink(e.currentTarget.value)} value={ghlink}  required margin="dense" name='gh_link' label="github LINK" id="skill" />
               {/* <TextField InputProps={{
                 endAdornment: <IconButton edge="end" color="primary">
