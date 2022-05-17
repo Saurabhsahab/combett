@@ -9,7 +9,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import { Alert, Button, Slide, Snackbar } from '@mui/material';
 import Drawer from "./Drawer"
 import zIndex from '@mui/material/styles/zIndex';
-// import { Snackbar } from '@mui/material';
+
 function CreatePost() {
   var CryptoJS = require('crypto-js');
   var udata = localStorage.getItem('user');
@@ -121,7 +121,7 @@ const [snackbaropen, setsnackbaropen] = useState(false)
 
 <div>
 
-<TextField onClick={()=>setsnackbaropen(!snackbaropen)} fullWidth margin='dense' name='title' label="Title for the Experience" />
+<TextField fullWidth margin='dense' name='title' label="Title for the Experience" />
           <br/>
           <TextField fullWidth margin='dense' name='c_name' label="Company Name" />
          

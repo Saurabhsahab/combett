@@ -49,7 +49,7 @@ const   mail=ans.email;
         const res = await blogdetailbysid(mail);
         console.log(JSON.parse(res))
         setblogdata(JSON.parse(res));
-        setblogdata(JSON.parse(res))
+        // setblogdata(JSON.parse(res))
     }
     useEffect(() => {
 
@@ -122,7 +122,7 @@ const [admin, setadmin] = useState(false)
                 <div>
                     {blogdata == "" ? "User has not shared any experience" : " All blogs by the user"}
                 </div>
-                {blogdata ? <Blogs data={blogdata} admin={admin} />  : <Loader />}
+                {blogdata ? <Blogs data={blogdata} admin={email} />  : <Loader />}
             </div>
         </div>
     )
