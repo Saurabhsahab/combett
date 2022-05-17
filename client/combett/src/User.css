@@ -1,10 +1,66 @@
 .uprofile{
     width: 80vw;
     background-color: white;
-display: flex;
-align-items: center;
+    display: flex;
+    /* align-items: center; */
     margin: 10px;
-    padding: 10px;
+    padding: 30px;
+    min-height: 20vh;
+    justify-content: space-around;
     border-radius: 5px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.041);
+}
+.dets{
+    display: flex;
+    align-items: center;
+
+}
+#name{
+    font-weight: 800;
+font-size: 1.4rem;
+}
+.det{
+   
+    padding: 10px;
+}
+#line{
+    height: 100%;width: 10px;
+    background-color: black;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.det>*{
+    font-family: 'Nunito', sans-serif !important;
+}
+.abt{
+    word-wrap: break-word;
+width:40%;
+/* display: flex; */
+padding-left: 20px;
+border-left: 3px solid rgba(51, 51, 51, 0.084);
+}
+.abt:nth-child(0)
+{
+    font-size: 4rem;
+    font-weight: 700;
+}
+@media only screen and (max-width: 800px) {
+.uprofile{
+    font-size: 1rem;
+    width: 90vw;
+    flex-direction: column;
+}
+.dets{
+    flex-direction: column;
+}
+.abt{
+border-left: none;
+width: 100%;
+
+padding-left: 0px;
+}
+
 }
