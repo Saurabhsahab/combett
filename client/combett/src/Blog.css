@@ -22,6 +22,12 @@ word-break: break-word;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.162);
     transition: all 0.2s;
 }
+.blog form{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+
+}
 .profile{
     min-height: 25vh;
 }

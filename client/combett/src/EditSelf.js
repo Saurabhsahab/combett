@@ -38,7 +38,7 @@ const [fbatch, setfbatch] = useState("")
   const bearer = process.env.bearer;
 
   
-  const getdetails = async () => {
+  const getdetails =  () => {
 
 
     var config = {
@@ -123,7 +123,7 @@ axios(config)
               <TextField pt={2} required name='fname' defaultValue={givenName} label="First Name" id="skill" />
               <TextField required margin="dense" name='lname' defaultValue={familyName} label="Last Name" id="skill" />
               <TextField InputLabelProps={{ shrink: true }} required margin="dense" name="email" value={email} label="Email" id="skill" />
-              <TextField required margin="dense" name="batch" defaultValue={fbatch} label="Batch" id="skill" placeholder='IT-23' />
+              <TextField required margin="dense" name="batch"  value={fbatch} label="Batch" id="skill" placeholder='IT-23' />
               <TextField multiline={4} required margin="dense" name='about' defaultValue= {about} label="About" id="skill" />
               <TextField required margin="dense" name='present_company' label="Present Company" placeholder='NAN' helperText="NAN if you are a student" id="skill" />
               <TextField required margin="dense" name='gh_link' label="github LINK" id="skill" />
