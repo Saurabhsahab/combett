@@ -32,6 +32,32 @@ const navigate=useNavigate();
     , googleId
     , imageUrl } = ans;
 
+    const updateuser = async (data) => {
+      console.log(data);
+      
+      var config = {
+        // data : data,
+        method: 'patch',
+        url: '/useremail/'+ans.email,
+        headers: {
+          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzMzY3NTU0LCJpYXQiOjE2NDI5MzU1NTQsImp0aSI6IjNlMGYzZTUwMzQ4ZTRkZGVhZjdiNDQ1YTNiOWRmZjM3IiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiU3VkaGFuc2h1IFJhbmphbiJ9.7REJ99i_2WiC-yXEnFeEWsRa-y-44bhoFXZ2GynMT5c',
+          'Content-Type': 'text/plain'
+        },
+  
+      };
+  
+      axios(config)
+        .then(function (response) {
+      return (response.data);
+          console.log(JSON.stringify(response.data));
+    })
+        .catch(function (error) {
+          console.log(error);
+        });
+  
+  
+    }
+
     const [about, setabout] = useState("")
 const [fbatch, setfbatch] = useState("")
   // const navigate = useNavigate();
@@ -56,12 +82,13 @@ axios(config)
     .then(function (response) {
         const x=JSON.stringify(response.data);
         const res=(response.data)
-        setuserdata(res[0]);
-        console.log(res[0])
-        setabout(res[0].about);
         setfbatch(res[0].batch);
-        
-  //  navigate("/user/"+response.data[0]._id)
+        setabout(res[0].about);
+        setuserdata(res[0]);
+        console.log(res[0].batch)
+        setghlink(res[0].gh_link)
+      
+ 
     })
     .catch(function (error) {
       console.log(error);
@@ -71,7 +98,7 @@ axios(config)
 
   }
 
-
+const [ghlink, setghlink] = useState("")
   const [textValue, setTextValue] = useState("");
 
   const onTextChange = (e) => {
@@ -114,19 +141,19 @@ axios(config)
 
               var object = {};
               data.forEach((value, key) => object[key] = value);
-              object['pf_img'] = imageUrl
+              
               var json = JSON.stringify(object);
-              // updateuser(object);
-              console.log(json);
+        updateuser(json);
+              
             }}>
             
               <TextField pt={2} required name='fname' defaultValue={givenName} label="First Name" id="skill" />
               <TextField required margin="dense" name='lname' defaultValue={familyName} label="Last Name" id="skill" />
               <TextField InputLabelProps={{ shrink: true }} required margin="dense" name="email" value={email} label="Email" id="skill" />
-              <TextField required margin="dense" name="batch"  value={fbatch} label="Batch" id="skill" placeholder='IT-23' />
-              <TextField multiline={4} required margin="dense" name='about' defaultValue= {about} label="About" id="skill" />
-              <TextField required margin="dense" name='present_company' label="Present Company" placeholder='NAN' helperText="NAN if you are a student" id="skill" />
-              <TextField required margin="dense" name='gh_link' label="github LINK" id="skill" />
+              <TextField onChange={(e)=>setfbatch(e.currentTarget.value)} value={fbatch}  required margin="dense" InputLabelProps={{ shrink: true }} name="batch" defaultValue={fbatch} label="Batch" id="skill" placeholder='IT-23' />
+              <TextField  multiline required margin="dense" name='about' defaultValue= {about} label="About" id="skill" />
+              <TextField  required margin="dense" name='present_company' value={userdata.present_company} label="Present Company" placeholder='NAN' helperText="NAN if you are a student" id="skill" />
+              <TextField onChange={(e)=>setghlink(e.currentTarget.value)} value={ghlink}  required margin="dense" name='gh_link' label="github LINK" id="skill" />
               {/* <TextField InputProps={{
                 endAdornment: <IconButton edge="end" color="primary">
                   <SendIcon onClick={() => {
@@ -154,7 +181,7 @@ axios(config)
                   )
                 }
               </div>
-              <Button type='submit' variant="contained" endIcon={<SendIcon />} >Complete Profile
+              <Button  type='submit' variant="contained" endIcon={<SendIcon />} >Update Profile
               </Button>
             </form>
           </div>

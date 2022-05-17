@@ -12,6 +12,17 @@ function UserPorfile() {
     const x = useParams();
 
 
+    var CryptoJS = require("crypto-js");
+    const v = localStorage.getItem('user');
+    var decrypted = CryptoJS.AES.decrypt(v, "somekey");
+    var ans = JSON.parse(CryptoJS.enc.Utf8.stringify(decrypted));
+  
+    const {
+       familyName
+      , givenName
+      , googleId
+      , imageUrl } = ans;
+const   mail=ans.email;
     const [data, setdata] = useState("")
     const { fname, lname, about, email, gh_link, pf_img, present_company, batch, _sid } = data;
 
@@ -24,6 +35,10 @@ function UserPorfile() {
         }
         const cnd = JSON.parse(res);
         setdata(cnd[0]);
+        if(mail==email)
+        {
+            setadmin(true);
+        }
         getexpbyuser(cnd[0].email);
         console.log(cnd[0])
 
@@ -44,16 +59,24 @@ function UserPorfile() {
 
     }, [])
 
-
+const [admin, setadmin] = useState(false)
 
     return (
         <div>
             <Drawer />
 
             <div className='Blog-cont'>
-
+            {email==mail?<Tooltip title="Edit Details" > 
+                                <IconButton href="/editself"aria-label="Edit" text>
+                           
+                                    <RateReviewIcon />
+                                   
+                                </IconButton>
+                            
+                            </Tooltip>:""}
+       
                 <div className='uprofile'>
-
+     
                     <div className='dets'>
 
                         <Avatar sx={{ height: '70px', width: '70px' }} src={pf_img} />
@@ -76,12 +99,7 @@ function UserPorfile() {
                                 </IconButton>
 
                             </span>
-                            {/* <Tooltip title="Edit Details" > 
-                                <IconButton href="/editself"aria-label="Edit" text>
-
-                                    <RateReviewIcon />
-                                </IconButton>
-                            </Tooltip> */}
+                            
                         </div>
                     </div>
                     <span id="line">
@@ -104,7 +122,7 @@ function UserPorfile() {
                 <div>
                     {blogdata == "" ? "User has not shared any experience" : " All blogs by the user"}
                 </div>
-                {blogdata ? <Blogs data={blogdata} /> : <Loader />}
+                {blogdata ? <Blogs data={blogdata} admin={admin} />  : <Loader />}
             </div>
         </div>
     )
