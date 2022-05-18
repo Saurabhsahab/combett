@@ -115,14 +115,11 @@ if(response.status==200)
               var object = {};
               data.forEach((value, key) => object[key] = value);
               object['description']=content;
-              if(content.length<10)
-              {
-                return;
-              }
              
+              updateexp(object);
 
               var json = JSON.stringify(object);
-              updateexp(object);
+              
               // createexp(object);
 
 
