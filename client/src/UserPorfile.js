@@ -27,6 +27,7 @@ const   mail=ans.email;
     const { fname, lname, about, email, gh_link, pf_img, present_company, batch, _sid } = data;
 
     // var {}=data;
+    const [admin, setadmin] = useState(false)
     async function getuser() {
         const res = await getuserdetailsbyid(x.id);
 
@@ -49,7 +50,7 @@ const   mail=ans.email;
         const res = await blogdetailbysid(mail);
         console.log(JSON.parse(res))
         setblogdata(JSON.parse(res));
-        // setblogdata(JSON.parse(res))
+      
     }
     useEffect(() => {
 
@@ -59,7 +60,7 @@ const   mail=ans.email;
 
     }, [])
 
-const [admin, setadmin] = useState(false)
+
 
     return (
         <div>
@@ -122,7 +123,7 @@ const [admin, setadmin] = useState(false)
                 <div>
                     {blogdata == "" ? "User has not shared any experience" : " All blogs by the user"}
                 </div>
-                {blogdata ? <Blogs data={blogdata} admin={email} />  : <Loader />}
+                {blogdata  ? <Blogs data={blogdata} admin={mail} />  : <Loader />}
             </div>
         </div>
     )
