@@ -2,8 +2,15 @@
  ComBett - Community but better , by  Team- Prime Numbers , prepared under the hackathon hack-encounter, by NowOrNever Community.
 
 
-We Plan to develope a fullstack platform that helps in building a community where we can help each other in every aspect of software engineering, be it coding, development, placement preparation by providing right resources and direct interactions among the community.
+We Plan to develope a fullstack platform that helps in building a community where we can help each other in
+every aspect of software engineering, be it coding, development, placement preparation by providing
+right resources and direct interactions among the community.</br></br>
 
+● Implemented client server architecture - Node Js for backend and React Js for frontend.</br>
+● Implemented all features of Rest API for handling requests of the frontend and deliver dynamic content to the user.</br>
+● Implemented user authentication as well as account creation through google Oauth credentials to ensure security and also used MongoDB database for flexibility and
+its cloud access of MongoDB Atlas gives one DB many users facility .</br>
+● Tech Used: Nodejs | ExpressJs | Git | Reactjs | MongoDB Atlas | Rest API</br>
 
 
 
