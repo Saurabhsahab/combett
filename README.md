@@ -1,9 +1,8 @@
 # Combett
- ComBett - Community but better , by  Team- Prime Numbers , prepared under the hackathon hack en counter, by NowOrNever Community.
+ ComBett - Community but better , by  Team- Prime Numbers , prepared under the hackathon hack-encounter, by NowOrNever Community.
 
 
-We plan to develop a platform that helps in building a community where we can help each other in every aspect of software engineering, be it coding, development, placement preparation by providing right resources and direct interactions among the community.
-
+We Plan to develope a fullstack platform that helps in building a community where we can help each other in every aspect of software engineering, be it coding, development, placement preparation by providing right resources and direct interactions among the community.
 
 
 
